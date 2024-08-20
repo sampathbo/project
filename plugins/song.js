@@ -28,10 +28,10 @@ async (conn, mek, m, { from, quoted, body, isCmd, q, pushname }) => {
 `;
 
         // Sending song information and giving the user options to download
-        conn.reply(desc);
+        return reply(desc);
 
         // Ask user how they want to download the song
-        conn.reply(from, "Please choose: \n1. Audio \n2. Document", m);
+        return reply(from, "Please choose: \n1. Audio \n2. Document", m);
 
 
         const filter = (m) => m.key.fromMe && m.body.match(/^(1|2)$/);
@@ -49,11 +49,11 @@ async (conn, mek, m, { from, quoted, body, isCmd, q, pushname }) => {
                 const docName = `${data.title}.mp3`;
                 await conn.sendMessage(from, { document: { url: message.dl_link }, mimetype: 'audio/mp4', fileName: docName }, { quoted: mek });
             } else {
-                conn.reply(from, "Invalid option selected", m);
+                return reply(from, "Invalid option selected", m);
 
             }
         } else {
-            conn.reply(from, "Did not reply in time", m);
+            return reply(from, "Did not reply in time", m);
 
         }
     } catch (err) {
