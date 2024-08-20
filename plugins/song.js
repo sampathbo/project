@@ -1,4 +1,6 @@
-const {cmd , commands} = require('../command');
+const config = require('../config')
+const {cmd , commands} = require('../command')
+const {sleep} = require('../lib/functions')
 const fg = require('api-dylux');
 const yts = require('yt-search');
 
