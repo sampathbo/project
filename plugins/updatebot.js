@@ -1,5 +1,5 @@
 const { exec } = require('child_process');
-const { cmd, commands } = require('../commands');
+const {cmd , commands} = require('../command');
 
 cmd({
     pattern: "update",
